@@ -1,1 +1,32 @@
 services:
+  db:
+    image: mysql:9.3.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'my_sql_db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      # <Port exposed> : <MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - my-db:/var/lib/mysql
+  oracle-db:
+    image: container-registry.oracle.com/database/express:latest
+    container_name: oracle-demo
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_PWD=YourPassword123
+      # Where our data will be persisted
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+# Names our volume
+volumes:
+  my-db:
+  oracle-data:
