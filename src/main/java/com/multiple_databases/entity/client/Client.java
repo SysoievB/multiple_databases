@@ -1,4 +1,4 @@
-package com.multiple_databases.entity;
+package com.multiple_databases.entity.client;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 @Table(name = "clients")
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
